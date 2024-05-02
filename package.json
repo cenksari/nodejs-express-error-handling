@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "nodejs-express-error-handling",
   "version": "1.0.0",
-  "description": "nodejs express api playground",
+  "description": "nodejs express error handling",
   "main": "src/index.ts",
   "scripts": {
     "nodemon": "nodemon src/index.ts localhost 3000",
