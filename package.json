@@ -1,0 +1,20 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "nodejs express api playground",
+  "main": "src/index.ts",
+  "scripts": {
+    "nodemon": "nodemon src/index.ts localhost 3000",
+    "start": "npx api src/index.ts"
+  },
+  "author": "Cenk SARI",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
