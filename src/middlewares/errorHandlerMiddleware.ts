@@ -1,8 +1,6 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 
-import { NotFoundError } from '../errors/NotFoundError';
-import { BadRequestError } from '../errors/BadRequestError';
-import { AuthenticationError } from '../errors/AuthenticationError';
+import { CustomError } from '../errors/CustomError';
 
 export const errorHandlerMiddleware: ErrorRequestHandler = (
   error: Error,
@@ -10,25 +8,13 @@ export const errorHandlerMiddleware: ErrorRequestHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  if (error instanceof NotFoundError) {
+  if (error instanceof CustomError) {
     return res
-      .status(error.statusCode)
-      .send({ title: error.message });
-  }
-
-  if (error instanceof BadRequestError) {
-    return res
-      .status(error.statusCode)
-      .send({ title: error.message });
-  }
-
-  if (error instanceof AuthenticationError) {
-    return res
-      .status(error.statusCode)
-      .send({ title: error.message });
+      .status(error.StatusCode)
+      .send(error.serialize());
   }
 
   return res
     .status(500)
-    .send({ title: error.message });
+    .send({ message: `Something bad happened: ${error.message}` });
 };
