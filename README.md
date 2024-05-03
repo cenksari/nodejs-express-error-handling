@@ -50,5 +50,11 @@ throw new BadRequestError('Please enter your e-mail address.');
 throw new AuthenticationError('User unauthorized.');
 ```
 
+### Async errors
+
+```javascript
+return next(new AuthenticationError('User unauthorized.'));
+```
+
 ## Contributing
 If you would like to contribute, please create a new branch and submit a pull request with your changes. Review may be needed before acceptance.
