@@ -1,10 +1,18 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 import { NotFoundError } from '../errors/NotFoundError';
 import { BadRequestError } from '../errors/BadRequestError';
 import { AuthenticationError } from '../errors/AuthenticationError';
 
-const signIn = (req: Request, res: Response) => {
+/**
+ * Sign in function that handles user authentication.
+ *
+ * @param {Request} req - The request object containing user data.
+ * @param {Response} res - The response object used to send the response.
+ * @throws {BadRequestError} If the email or password is missing or empty.
+ * @return {Response} The response object with the sign-in result.
+ */
+const signIn = (req: Request, res: Response): Response => {
   const { email, password } = req.body;
 
   if (!email || email === '') {
@@ -21,7 +29,15 @@ const signIn = (req: Request, res: Response) => {
   return res.send(val);
 };
 
-const signUp = (req: Request, res: Response) => {
+/**
+ * Sign up function that handles user registration.
+ *
+ * @param {Request} req - The request object containing user data.
+ * @param {Response} res - The response object used to send the response.
+ * @throws {BadRequestError} If the email, name, or lastname is missing or empty.
+ * @return {Response} The response object with the sign-up result.
+ */
+const signUp = (req: Request, res: Response): Response => {
   const { email, name, lastname } = req.body;
 
   if (!email || email === '') {
@@ -40,16 +56,24 @@ const signUp = (req: Request, res: Response) => {
   return res.send(val);
 };
 
-const reset = (req: Request, res: Response) => {
+/**
+ * Asynchronously resets the password based on the provided email.
+ *
+ * @param {Request} req - The request object containing user data.
+ * @param {Response} res - The response object used to send the response.
+ * @param {NextFunction} next - The next middleware function in the application's request-response cycle.
+ * @return {Promise<Response | void>} The response or void promise after resetting the password.
+ */
+const reset = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
   const { email } = req.body;
 
   if (!email || email === '') {
-    throw new BadRequestError('Please enter your e-mail address.');
+    return next(new BadRequestError('Please enter your e-mail address.'));
   }
 
   const val = {
     data: req.body,
-    title: 'Password Reset successfully.',
+    title: 'Password reset successfully.',
   };
 
   return res.send(val);
