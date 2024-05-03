@@ -19,6 +19,8 @@ const signIn = (req: Request, res: Response): Response => {
     throw new BadRequestError('Please enter your e-mail address.');
   } else if (!password || password === '') {
     throw new BadRequestError('Please enter your password.');
+  } else if (password !== '1234') {
+    throw new AuthenticationError('Wrong password.');
   }
 
   const val = {
@@ -79,4 +81,13 @@ const reset = async (req: Request, res: Response, next: NextFunction): Promise<R
   return res.send(val);
 };
 
-export { signIn, signUp, reset };
+/**
+ * Throws a NotFoundError with the message 'Not found!'.
+ *
+ * @return {Response} The response object.
+ */
+const notFound = (): Response => {
+  throw new NotFoundError('Not found!');
+};
+
+export { signIn, signUp, reset, notFound };

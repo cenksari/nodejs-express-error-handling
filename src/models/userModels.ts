@@ -1,7 +1,7 @@
 export interface signInModel {
   email: string;
   password: string;
-};
+}
 
 export interface signUpModel {
   name: string;

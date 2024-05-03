@@ -1,4 +1,4 @@
-import { CustomError } from "./CustomError";
+import { CustomError } from './CustomError';
 
 export class AuthenticationError extends CustomError {
   StatusCode = 401;
@@ -9,7 +9,7 @@ export class AuthenticationError extends CustomError {
     Object.setPrototypeOf(this, AuthenticationError.prototype);
   }
 
-  serialize(): { message: string; } {
+  serialize(): { message: string } {
     return { message: this.message };
   }
 }
