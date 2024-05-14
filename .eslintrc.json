@@ -12,6 +12,7 @@
     "prettier"
   ],
   "rules": {
+    "semi": "error",
     "no-undef": "warn",
     "linebreak-style": "off",
     "no-unused-vars": "error",
