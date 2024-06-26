@@ -10,6 +10,8 @@ export const errorHandlerMiddleware: ErrorRequestHandler = (
 ) => {
   if (error instanceof CustomError) {
     res.status(error.StatusCode).send(error.serialize());
+
+    return;
   }
 
   res.status(500).send({ message: `Something bad happened: ${error.message}` });

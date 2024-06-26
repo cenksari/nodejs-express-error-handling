@@ -6,27 +6,27 @@ This project is a Node.js and Express application developed with a special error
 
 1. Clone the project:
 
-    ```bash
-    git clone https://github.com/cenksari/nodejs-express-error-handling.git
-    ```
+   ```bash
+   git clone https://github.com/cenksari/nodejs-express-error-handling.git
+   ```
 
 2. Navigate to the project directory:
 
-    ```bash
-    cd nodejs-express-error-handling
-    ```
+   ```bash
+   cd nodejs-express-error-handling
+   ```
 
 3. Install dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 4. Start the application:
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
 ## Usage
 
@@ -57,4 +57,5 @@ return next(new AuthenticationError('User unauthorized.'));
 ```
 
 ## Contributing
+
 If you would like to contribute, please create a new branch and submit a pull request with your changes. Review may be needed before acceptance.
