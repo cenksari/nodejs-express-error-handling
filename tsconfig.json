@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
   "include": ["./src/"]
 }
