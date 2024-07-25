@@ -1,6 +1,12 @@
 # Nodejs express custom error handling
 
-This project is a Node.js and Express application developed with a special error handling mechanism.
+This project showcases a Node.js and Express application that incorporates a custom error handling mechanism. The application is designed to handle errors in a structured way, providing a more informative and user-friendly experience for the client. The custom error handling system includes error types such as NotFoundError, BadRequestError, and AuthenticationError, each with a specific message that can be thrown and caught within the application. This approach enables the application to respond to errors in a more meaningful way, enhancing the overall user experience and facilitating easier debugging and error resolution.
+
+## Support this project
+
+You are free to download, change and use it anywhere. I will regularly update this template with new resources and pages I found on the web. Don't hesitate to participate by sending a PR! Maybe your first on Github :)
+
+If you like this resource, please follow me on GitHub. Thank you!
 
 ## Installation
 
