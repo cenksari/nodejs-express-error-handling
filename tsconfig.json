@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
     "rootDir": "src/",
     "outDir": "out/",
     "esModuleInterop": true,
@@ -12,5 +12,5 @@
     "sourceMap": true,
     "moduleResolution": "node"
   },
-  "include": ["./src/"]
+  "include": ["src", "**/*.ts", "**/*.cjs", "**/*.mjs", ".prettierrc.mjs", "eslint.config.mjs"]
 }
