@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { NotFoundError } from '../errors/NotFoundError';
 import { BadRequestError } from '../errors/BadRequestError';
 import { AuthenticationError } from '../errors/AuthenticationError';
 
@@ -10,9 +9,12 @@ import { AuthenticationError } from '../errors/AuthenticationError';
  * @param {Request} req - The request object containing user data.
  * @param {Response} res - The response object used to send the response.
  * @throws {BadRequestError} If the email or password is missing or empty.
- * @return {Response} The response object with the sign-in result.
  */
-const signIn = (req: Request, res: Response): Response => {
+export const signIn = (req: Request, res: Response): void => {
+  if (req.body === undefined || req.body === null) {
+    throw new BadRequestError('Please enter your e-mail address and password.');
+  }
+
   const { email, password } = req.body;
 
   if (!email || email === '') {
@@ -28,7 +30,7 @@ const signIn = (req: Request, res: Response): Response => {
     title: 'Signed in successfully.',
   };
 
-  return res.send(val);
+  res.send(val);
 };
 
 /**
@@ -37,9 +39,12 @@ const signIn = (req: Request, res: Response): Response => {
  * @param {Request} req - The request object containing user data.
  * @param {Response} res - The response object used to send the response.
  * @throws {BadRequestError} If the email, name, or lastname is missing or empty.
- * @return {Response} The response object with the sign-up result.
  */
-const signUp = (req: Request, res: Response): Response => {
+export const signUp = (req: Request, res: Response): void => {
+  if (req.body === undefined || req.body === null) {
+    throw new BadRequestError('Please enter your signup information.');
+  }
+
   const { email, name, lastname } = req.body;
 
   if (!email || email === '') {
@@ -55,7 +60,7 @@ const signUp = (req: Request, res: Response): Response => {
     title: 'Signed up successfully.',
   };
 
-  return res.send(val);
+  res.send(val);
 };
 
 /**
@@ -64,9 +69,12 @@ const signUp = (req: Request, res: Response): Response => {
  * @param {Request} req - The request object containing user data.
  * @param {Response} res - The response object used to send the response.
  * @param {NextFunction} next - The next middleware function in the application's request-response cycle.
- * @return {Promise<Response | void>} The response or void promise after resetting the password.
  */
-const reset = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
+export const reset = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  if (req.body === undefined || req.body === null) {
+    throw new BadRequestError('Please enter your e-mail address.');
+  }
+
   const { email } = req.body;
 
   if (!email || email === '') {
@@ -78,16 +86,5 @@ const reset = async (req: Request, res: Response, next: NextFunction): Promise<R
     title: 'Password reset successfully.',
   };
 
-  return res.send(val);
+  res.send(val);
 };
-
-/**
- * Throws a NotFoundError with the message 'Not found!'.
- *
- * @return {Response} The response object.
- */
-const notFound = (): Response => {
-  throw new NotFoundError('Not found!');
-};
-
-export { signIn, signUp, reset, notFound };
